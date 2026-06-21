@@ -26,7 +26,7 @@ EOF
 COPY --chmod=755 <<EOF /bin/entrypoint.sh
 #!/usr/bin/env bash
     set -euo pipefail
-    : "\${BRANCH:=zephyr-4-1-disable-endpoint-fallback}"
+    : "\${BRANCH:=zmk-pr2572}"
 
     echo "Checking out \$BRANCH from IntenseWiggling/zmk-moergo" >&2
     cd /src
