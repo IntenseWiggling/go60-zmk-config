@@ -25,6 +25,15 @@ jobs:
         run: nix-build config -o combined
       - name: Copy result out of nix store
         run: cp combined/go60.uf2 go60.uf2
+      - name: Build left-half ELF
+        run: nix-build config -A go60_left_elf -o elf
+      - name: Copy ELF out of nix store
+        run: cp elf/zmk.elf go60_lh.elf
+      - name: Upload ELF
+        uses: actions/upload-artifact@v4
+        with:
+          name: go60-elf
+          path: go60_lh.elf
       - name: Upload result
         uses: actions/upload-artifact@v4
         with:
